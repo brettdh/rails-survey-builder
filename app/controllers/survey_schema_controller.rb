@@ -1,2 +1,0 @@
-class SurveySchemaController < ApplicationController
-end

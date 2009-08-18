@@ -1,2 +1,0 @@
-class SurveyResponseController < ApplicationController
-end
