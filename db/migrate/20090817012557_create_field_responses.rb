@@ -1,7 +1,8 @@
 class CreateFieldResponses < ActiveRecord::Migration
   def self.up
     create_table :field_responses do |t|
-
+      t.string :value
+      t.references :field
       t.timestamps
     end
   end
