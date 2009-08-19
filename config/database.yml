@@ -3,7 +3,7 @@
 development:
   adapter: mysql
   database: surveybuilder_development
-  username: surveybuilder
+  username: root
   password: thisisfake
 
 # Warning: The database defined as "test" will be erased and
@@ -12,11 +12,11 @@ development:
 test:
   adapter: mysql
   database: surveybuilder_test
-  username: surveybuilder
+  username: root
   password: thisisfake
 
 production:
   adapter: mysql
   database: surveybuilder_production
-  username: surveybuilder
+  username: root
   password: $up3rse(re7r4nD0mNEsS
