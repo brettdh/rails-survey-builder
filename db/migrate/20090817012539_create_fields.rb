@@ -4,8 +4,10 @@ class CreateFields < ActiveRecord::Migration
       t.integer :sort_order
       t.string :prompt
       t.integer :type
-      t.boolean :subfield
-      t.references :super_field
+      t.references :survey_schema
+      t.references :field_group
+      t.references :subfield
+      t.references :superfield
       t.timestamps
     end
   end

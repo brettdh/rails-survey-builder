@@ -8,5 +8,6 @@ class Field < ActiveRecord::Base
 
   belongs_to :survey_schema
   belongs_to :field_group
-  has_one :sub_field, :through => :fields # may be nil
+  belongs_to :superfield, :through => :fields # may be nil
+  has_many :subfields, :through => :fields # may be nil
 end
