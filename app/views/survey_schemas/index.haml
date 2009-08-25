@@ -1,2 +1,9 @@
 %h1
-  Hello, world!
+  Surveys
+%table
+  -@surveys.each do |survey|
+    %tr
+      %td
+        %a{:href => survey_url(survey.id)}
+          =survey.id
+      %td= survey.title
