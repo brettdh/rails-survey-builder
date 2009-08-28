@@ -2,4 +2,4 @@
   ="#{@survey.title}"
 %h4
   =@survey.preamble
-
+= render :partial => "field_group", :collection => @field_groups

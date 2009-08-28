@@ -1,9 +1,12 @@
 class CreateFieldGroupsFields < ActiveRecord::Migration
   def self.up
     create_table :field_groups_fields do |t|
-      t.string :field_type
-      t.integer :field_id
-      t.integer :field_group_id
+      t.integer :sort_order
+      t.string :prompt
+
+      t.references :field, :polymorphic => true
+      t.references :field_group
+
       t.timestamps
     end
   end

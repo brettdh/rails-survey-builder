@@ -26,8 +26,8 @@ class SurveySchemasController < ApplicationController
     @field_groups = [] if @field_groups.nil?
     @fields = {}
     @field_groups.each do |group|
-      field_list = Field.find_by_field_group(group, {:order => :sort_order})
-      @fields[group.id] = field_list
+      #field_list = Field.find_by_field_group(group, {:order => :sort_order})
+      # @fields[group.id] = field_list
     end
   end
 
