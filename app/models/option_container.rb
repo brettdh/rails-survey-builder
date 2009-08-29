@@ -1,0 +1,2 @@
+class OptionContainer < Field
+end

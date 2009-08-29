@@ -1,3 +1,3 @@
-class TextBox < ActiveRecord::Base
+class TextBox < Field
   
 end
