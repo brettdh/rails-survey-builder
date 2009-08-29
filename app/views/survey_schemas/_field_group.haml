@@ -1,0 +1,5 @@
+.field_group
+  %h4= field_group.title
+  %h5= field_group.preamble
+  - field_group.fields.each do |field|
+    = render_field(field)

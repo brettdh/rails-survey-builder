@@ -1,0 +1,74 @@
+# automatically generated fixtures from database data
+
+fieldgroupsfield_1:
+  created_at: 2009-08-29 20:38:23 Z
+  field_id: 1
+  field_group_id: 1
+  updated_at: 2009-08-29 20:38:23 Z
+  id: 1
+  field_type: Field
+
+fieldgroupsfield_2:
+  created_at: 2009-08-29 20:39:54 Z
+  field_id: 2
+  field_group_id: 1
+  updated_at: 2009-08-29 20:39:54 Z
+  id: 2
+  field_type: Field
+
+fieldgroupsfield_3:
+  created_at: 2009-08-29 20:40:07 Z
+  field_id: 3
+  field_group_id: 1
+  updated_at: 2009-08-29 20:40:07 Z
+  id: 3
+  field_type: Field
+
+fieldgroupsfield_4:
+  created_at: 2009-08-29 20:40:17 Z
+  field_id: 4
+  field_group_id: 1
+  updated_at: 2009-08-29 20:40:17 Z
+  id: 4
+  field_type: Field
+
+fieldgroupsfield_5:
+  created_at: 2009-08-29 20:43:34 Z
+  field_id: 6
+  field_group_id: 2
+  updated_at: 2009-08-29 20:43:34 Z
+  id: 5
+  field_type: Field
+
+fieldgroupsfield_6:
+  created_at: 2009-08-29 20:43:57 Z
+  field_id: 7
+  field_group_id: 2
+  updated_at: 2009-08-29 20:43:57 Z
+  id: 6
+  field_type: Field
+
+fieldgroupsfield_7:
+  created_at: 2009-08-29 21:32:18 Z
+  field_id: 8
+  field_group_id: 2
+  updated_at: 2009-08-29 21:32:18 Z
+  id: 7
+  field_type: Field
+
+fieldgroupsfield_8:
+  created_at: 2009-08-29 21:41:34 Z
+  field_id: 14
+  field_group_id: 1
+  updated_at: 2009-08-29 21:41:34 Z
+  id: 8
+  field_type: Field
+
+fieldgroupsfield_9:
+  created_at: 2009-08-29 21:49:08 Z
+  field_id: 18
+  field_group_id: 1
+  updated_at: 2009-08-29 21:49:08 Z
+  id: 9
+  field_type: Field
+

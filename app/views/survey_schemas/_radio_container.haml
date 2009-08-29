@@ -1,0 +1,7 @@
+.option_container
+  = field.prompt
+  %br
+  - field.subfields.each do |subfield|
+    %input{:type => :radio, :name => "radio#{field.id}", :value => subfield.prompt}
+      = render_field(subfield)
+      %br

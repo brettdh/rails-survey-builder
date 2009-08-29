@@ -1,0 +1,15 @@
+db:fixtures:dump
+================
+
+a rake task that will extract the current db database contents into fixtures
+
+the fixtures are by default keyed by classname_id, but this can be overriden
+by defining 'self.fixture_name_column' on the model
+
+the method can either return a string, which will be a column name to use as
+the key, or it can return a proc which takes the instance as a parameter,
+allowing complex keys
+
+Written By:  Piotr Banasik <piotr.banasik@gmail.com>
+Released: 2006-08-21
+License: MIT, please check included document

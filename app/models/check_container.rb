@@ -1,0 +1,2 @@
+class CheckContainer < Field
+end

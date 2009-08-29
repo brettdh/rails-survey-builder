@@ -1,7 +1,10 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+# automatically generated fixtures from database data
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+surveyschema_1:
+  preamble: Look at what I can do
+  created_at: 2009-08-29 20:28:24 Z
+  title: Survey 1
+  updated_at: 2009-08-29 21:52:27 Z
+  owner_id: 
+  id: 1
+

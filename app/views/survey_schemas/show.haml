@@ -1,5 +1,4 @@
-%h1
-  ="#{@survey.title}"
-%h4
-  =@survey.preamble
-= render :partial => "field_group", :collection => @field_groups
+%h1= @survey.title
+%h4= @survey.preamble
+- @survey.field_groups.each do |field_group|
+  = render :partial => 'field_group', :locals => {:field_group => field_group}

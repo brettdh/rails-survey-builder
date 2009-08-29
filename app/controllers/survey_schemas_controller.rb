@@ -22,13 +22,6 @@ class SurveySchemasController < ApplicationController
 
   def show
     @survey = SurveySchema.find(params[:id])
-    @field_groups = FieldGroup.find_by_survey_schema_id(@survey, {:order => :sort_order})
-    @field_groups = [] if @field_groups.nil?
-    @fields = {}
-    @field_groups.each do |group|
-      #field_list = Field.find_by_field_group(group, {:order => :sort_order})
-      # @fields[group.id] = field_list
-    end
   end
 
   def edit

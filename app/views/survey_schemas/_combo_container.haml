@@ -1,0 +1,5 @@
+.option_container
+  = field.prompt
+  %select{:name => "combo#{field.id}"}
+    - field.subfields.each do |subfield|
+      %option{:value => subfield.prompt}= subfield.prompt

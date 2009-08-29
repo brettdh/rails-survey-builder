@@ -1,7 +1,170 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+# automatically generated fixtures from database data
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+field_1:
+  created_at: 2009-08-29 20:38:23 Z
+  updated_at: 2009-08-29 20:39:17 Z
+  sort_order: 1
+  id: 1
+  type: TextBox
+  prompt: Hello!
+
+field_2:
+  created_at: 2009-08-29 20:39:54 Z
+  updated_at: 2009-08-29 20:39:54 Z
+  sort_order: 2
+  id: 2
+  type: TextBox
+  prompt: What is your name?
+
+field_3:
+  created_at: 2009-08-29 20:40:07 Z
+  updated_at: 2009-08-29 20:40:07 Z
+  sort_order: 3
+  id: 3
+  type: TextBox
+  prompt: What is your quest?
+
+field_4:
+  created_at: 2009-08-29 20:40:17 Z
+  updated_at: 2009-08-29 20:40:17 Z
+  sort_order: 4
+  id: 4
+  type: TextBox
+  prompt: What is your favorite color?
+
+field_5:
+  created_at: 2009-08-29 20:42:28 Z
+  updated_at: 2009-08-29 20:42:28 Z
+  sort_order: 
+  id: 5
+  type: TextBox
+  prompt: 
+
+field_6:
+  created_at: 2009-08-29 20:43:34 Z
+  updated_at: 2009-08-29 20:43:34 Z
+  sort_order: 1
+  id: 6
+  type: TextBox
+  prompt: Oog?
+
+field_7:
+  created_at: 2009-08-29 20:43:57 Z
+  updated_at: 2009-08-29 20:43:57 Z
+  sort_order: 2
+  id: 7
+  type: TextBox
+  prompt: Graghl blaghl blog?
+
+field_8:
+  created_at: 2009-08-29 21:32:18 Z
+  updated_at: 2009-08-29 21:32:18 Z
+  sort_order: 3
+  id: 8
+  type: RadioContainer
+  prompt: Which of these is the most awesome?
+
+field_9:
+  created_at: 2009-08-29 21:34:55 Z
+  updated_at: 2009-08-29 21:34:55 Z
+  sort_order: 1
+  id: 9
+  type: Option
+  prompt: Dolphins
+
+field_10:
+  created_at: 2009-08-29 21:35:05 Z
+  updated_at: 2009-08-29 21:35:05 Z
+  sort_order: 2
+  id: 10
+  type: Option
+  prompt: Lasers
+
+field_11:
+  created_at: 2009-08-29 21:35:19 Z
+  updated_at: 2009-08-29 21:35:19 Z
+  sort_order: 3
+  id: 11
+  type: Option
+  prompt: Dolphins WITH lasers
+
+field_12:
+  created_at: 2009-08-29 21:35:28 Z
+  updated_at: 2009-08-29 21:35:28 Z
+  sort_order: 4
+  id: 12
+  type: Option
+  prompt: What
+
+field_14:
+  created_at: 2009-08-29 21:41:34 Z
+  updated_at: 2009-08-29 21:41:34 Z
+  sort_order: 5
+  id: 14
+  type: ComboContainer
+  prompt: "Select one:"
+
+field_15:
+  created_at: 2009-08-29 21:42:29 Z
+  updated_at: 2009-08-29 21:42:29 Z
+  sort_order: 1
+  id: 15
+  type: Option
+  prompt: "Yes"
+
+field_16:
+  created_at: 2009-08-29 21:42:45 Z
+  updated_at: 2009-08-29 21:42:45 Z
+  sort_order: 2
+  id: 16
+  type: Option
+  prompt: No...?
+
+field_17:
+  created_at: 2009-08-29 21:42:54 Z
+  updated_at: 2009-08-29 21:42:54 Z
+  sort_order: 3
+  id: 17
+  type: Option
+  prompt: I CAN'T HEAR YOU
+
+field_18:
+  created_at: 2009-08-29 21:49:08 Z
+  updated_at: 2009-08-29 21:49:08 Z
+  sort_order: 6
+  id: 18
+  type: CheckContainer
+  prompt: "Never gonna:"
+
+field_19:
+  created_at: 2009-08-29 21:49:34 Z
+  updated_at: 2009-08-29 21:49:34 Z
+  sort_order: 1
+  id: 19
+  type: Option
+  prompt: give you up
+
+field_20:
+  created_at: 2009-08-29 21:49:56 Z
+  updated_at: 2009-08-29 21:49:56 Z
+  sort_order: 2
+  id: 20
+  type: Option
+  prompt: let you down
+
+field_21:
+  created_at: 2009-08-29 21:50:06 Z
+  updated_at: 2009-08-29 21:50:06 Z
+  sort_order: 3
+  id: 21
+  type: Option
+  prompt: run around
+
+field_22:
+  created_at: 2009-08-29 21:50:16 Z
+  updated_at: 2009-08-29 21:50:16 Z
+  sort_order: 4
+  id: 22
+  type: Option
+  prompt: desert you
+

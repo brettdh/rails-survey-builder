@@ -1,0 +1,2 @@
+class RadioContainer < Field
+end

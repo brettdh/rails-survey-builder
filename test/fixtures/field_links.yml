@@ -1,0 +1,86 @@
+# automatically generated fixtures from database data
+
+fieldlink_1:
+  created_at: 2009-08-29 21:34:55 Z
+  subfield_id: 9
+  updated_at: 2009-08-29 21:34:55 Z
+  id: 1
+  superfield_id: 8
+
+fieldlink_2:
+  created_at: 2009-08-29 21:35:05 Z
+  subfield_id: 10
+  updated_at: 2009-08-29 21:35:05 Z
+  id: 2
+  superfield_id: 8
+
+fieldlink_3:
+  created_at: 2009-08-29 21:35:19 Z
+  subfield_id: 11
+  updated_at: 2009-08-29 21:35:19 Z
+  id: 3
+  superfield_id: 8
+
+fieldlink_4:
+  created_at: 2009-08-29 21:35:28 Z
+  subfield_id: 12
+  updated_at: 2009-08-29 21:35:28 Z
+  id: 4
+  superfield_id: 8
+
+fieldlink_5:
+  created_at: 2009-08-29 21:38:38 Z
+  subfield_id: 13
+  updated_at: 2009-08-29 21:38:38 Z
+  id: 5
+  superfield_id: 8
+
+fieldlink_6:
+  created_at: 2009-08-29 21:42:29 Z
+  subfield_id: 15
+  updated_at: 2009-08-29 21:42:29 Z
+  id: 6
+  superfield_id: 14
+
+fieldlink_7:
+  created_at: 2009-08-29 21:42:45 Z
+  subfield_id: 16
+  updated_at: 2009-08-29 21:42:45 Z
+  id: 7
+  superfield_id: 14
+
+fieldlink_8:
+  created_at: 2009-08-29 21:42:54 Z
+  subfield_id: 17
+  updated_at: 2009-08-29 21:42:54 Z
+  id: 8
+  superfield_id: 14
+
+fieldlink_9:
+  created_at: 2009-08-29 21:49:34 Z
+  subfield_id: 19
+  updated_at: 2009-08-29 21:49:34 Z
+  id: 9
+  superfield_id: 18
+
+fieldlink_10:
+  created_at: 2009-08-29 21:49:56 Z
+  subfield_id: 20
+  updated_at: 2009-08-29 21:49:56 Z
+  id: 10
+  superfield_id: 18
+
+fieldlink_11:
+  created_at: 2009-08-29 21:50:06 Z
+  subfield_id: 21
+  updated_at: 2009-08-29 21:50:06 Z
+  id: 11
+  superfield_id: 18
+
+fieldlink_12:
+  created_at: 2009-08-29 21:50:16 Z
+  subfield_id: 22
+  updated_at: 2009-08-29 21:50:16 Z
+  id: 12
+  superfield_id: 18
+
