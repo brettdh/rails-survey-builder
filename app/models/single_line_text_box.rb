@@ -1,0 +1,2 @@
+class SingleLineTextBox < Field
+end

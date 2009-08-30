@@ -1,5 +1,9 @@
 .option_container
-  = field.prompt
-  %select{:name => "combo#{field.id}"}
+  %span.prompt= field.prompt
+  %br
+  %select{:name => "field#{field.id}"}
     - field.subfields.each do |subfield|
       %option{:value => subfield.prompt}= subfield.prompt
+
+-# Maybe support an "Other" option if an option has a subfield;
+-#  we'd need a javascript listener to enable/disable the attached text box

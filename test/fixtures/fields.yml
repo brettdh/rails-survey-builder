@@ -5,7 +5,7 @@ field_1:
   updated_at: 2009-08-29 20:39:17 Z
   sort_order: 1
   id: 1
-  type: TextBox
+  type: SingleLineTextBox
   prompt: Hello!
 
 field_2:
@@ -13,7 +13,7 @@ field_2:
   updated_at: 2009-08-29 20:39:54 Z
   sort_order: 2
   id: 2
-  type: TextBox
+  type: SingleLineTextBox
   prompt: What is your name?
 
 field_3:
@@ -21,7 +21,7 @@ field_3:
   updated_at: 2009-08-29 20:40:07 Z
   sort_order: 3
   id: 3
-  type: TextBox
+  type: SingleLineTextBox
   prompt: What is your quest?
 
 field_4:
@@ -29,16 +29,8 @@ field_4:
   updated_at: 2009-08-29 20:40:17 Z
   sort_order: 4
   id: 4
-  type: TextBox
+  type: SingleLineTextBox
   prompt: What is your favorite color?
-
-field_5:
-  created_at: 2009-08-29 20:42:28 Z
-  updated_at: 2009-08-29 20:42:28 Z
-  sort_order: 
-  id: 5
-  type: TextBox
-  prompt: 
 
 field_6:
   created_at: 2009-08-29 20:43:34 Z

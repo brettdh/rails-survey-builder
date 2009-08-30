@@ -1,4 +1,5 @@
-%h1= @survey.title
-%h4= @survey.preamble
-- @survey.field_groups.each do |field_group|
-  = render :partial => 'field_group', :locals => {:field_group => field_group}
+%form.survey{ :name => "survey#{@survey.id}" }
+  %h1.title= @survey.title
+  %h3.preamble= @survey.preamble
+  - @survey.field_groups.each do |field_group|
+    = render :partial => 'field_group', :locals => {:field_group => field_group}
