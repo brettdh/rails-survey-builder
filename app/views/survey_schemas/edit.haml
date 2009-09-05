@@ -1,0 +1,10 @@
+%form.edit_survey{ :name => "survey#{@survey.id}" }
+  %h1= "Editing Survey #{@survey.id}"
+  .edit_title
+    Title: 
+    %input{:name => 'survey[title]', :value => @survey.title}
+  .edit_preamble
+    Preamble: 
+    %textarea{:name => 'survey[preamble]'}= @survey.preamble
+  - @survey.field_groups.each do |field_group|
+    = render :partial => 'edit_field_group', :locals => {:field_group => field_group}

@@ -2,4 +2,4 @@
   %h1.title= @survey.title
   %h3.preamble= @survey.preamble
   - @survey.field_groups.each do |field_group|
-    = render :partial => 'field_group', :locals => {:field_group => field_group}
+    = render :partial => 'show_field_group', :locals => {:field_group => field_group}

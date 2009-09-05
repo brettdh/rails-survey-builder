@@ -1,6 +1,11 @@
 class SurveySchemasController < ApplicationController
   before_filter :authenticate!
-
+  before_filter :lookup_survey, :only => [:show, :edit]
+  
+  def lookup_survey
+    @survey = SurveySchema.find(params[:id])
+  end
+  
   def authenticate!
     true
   end
@@ -21,7 +26,7 @@ class SurveySchemasController < ApplicationController
   end
 
   def show
-    @survey = SurveySchema.find(params[:id])
+    # @survey = SurveySchema.find(params[:id])
   end
 
   def edit

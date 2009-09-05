@@ -1,0 +1,11 @@
+.edit_field_group
+  %h3= "Field Group #{field_group.sort_order}"
+  .edit_title
+    Title:
+    %input{:name => "field_group_#{field_group.id}[title]", :value => field_group.title}
+  .edit_preamble
+    Preamble: 
+    %textarea{:name => "field_group_#{field_group.id}[preamble]"}= field_group.preamble
+  - field_group.fields.each do |field|
+    = render_field(field)
+    %br
