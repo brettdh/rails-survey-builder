@@ -10,3 +10,4 @@
     = render :partial => 'edit_field_group',   |
       :locals => {:field_group => field_group} |
     
+    = add_field_group_link(@survey, field_group.sort_order)
