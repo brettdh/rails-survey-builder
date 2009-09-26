@@ -7,4 +7,6 @@
     Preamble: 
     %textarea{:name => 'survey[preamble]'}= @survey.preamble
   - @survey.field_groups.each do |field_group|
-    = render :partial => 'edit_field_group', :locals => {:field_group => field_group}
+    = render :partial => 'edit_field_group',   |
+      :locals => {:field_group => field_group} |
+    

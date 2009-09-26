@@ -16,63 +16,32 @@ ActionController::Routing::Routes.draw do |map|
     survey.resources :responses, :controller => 'SurveyResponses'
   end
 
-=begin
-  map.surveys '/surveys', {
-    :controller => 'SurveySchemas', :action => 'index', 
-    :conditions => {:method => :get}
+=begin If we do all the processing in the SurveySchemasController,
+       we won't need these controllers and routes.
+  map.field_groups '/field_groups/', {
+    :controller => 'FieldGroups', :action => 'create',
+    :conditions => { :method => :post }
   }
-  map.surveys '/surveys', {
-    :controller => 'SurveySchemas', :action => 'create', 
-    :conditions => {:method => :post}
+  map.field_group '/field_groups/:group_id', {
+    :controller => 'FieldGroups', :action => 'update',
+    :conditions => { :method => :put }
   }
-  map.new_survey '/surveys/new', {
-    :controller => 'SurveySchemas', :action => 'new',
-    :conditions => {:method => :get}
-  }
-  map.survey '/surveys/:id', {
-    :controller => 'SurveySchemas', :action => 'show',
-    :conditions => {:method => :get}
-  }
-  map.survey '/surveys/:id', {
-    :controller => 'SurveySchemas', :action => 'update',
-    :conditions => {:method => :put}
-  }
-  map.edit_survey '/surveys/:id/edit', {
-    :controller => 'SurveySchemas', :action => 'edit', 
-    :conditions => {:method => :get}
-  }
-  map.delete_survey '/surveys/:id', {
-    :controller => 'SurveySchemas', :action => 'destroy', 
-    :conditions => {:method => :delete}
+  map.field_group '/field_groups/:group_id', {
+    :controller => 'FieldGroups', :action => 'destroy',
+    :conditions => { :method => :delete }
   }
 
-  map.responses '/surveys/:survey_id/responses', {
-    :controller => 'SurveyResponses', :action => 'index', 
-    :conditions => {:method => :get}
+  map.fields '/fields', {
+    :controller => 'Fields', :action => 'create',
+    :conditions => { :method => :post }
   }
-  map.responses '/surveys/:survey_id/responses', {
-    :controller => 'SurveyResponses', :action => 'create', 
-    :conditions => {:method => :post}
+  map.field '/fields/:field_id', {
+    :controller => 'Fields', :action => 'update',
+    :conditions => { :method => :put }
   }
-  map.new_response '/surveys/:survey_id/responses/new', {
-    :controller => 'SurveyResponses', :action => 'new', 
-    :conditions => {:method => :get}
-  }
-  map.response '/surveys/:survey_id/responses/:response_id', {
-    :controller => 'SurveyResponses', :action => 'show', 
-    :conditions => {:method => :get}
-  }
-  map.response '/surveys/:survey_id/responses/:response_id', {
-    :controller => 'SurveyResponses', :action => 'update', 
-    :conditions => {:method => :put}
-  }
-  map.edit_response '/surveys/:survey_id/responses/:response_id/edit', {
-    :controller => 'SurveyResponses', :action => 'edit', 
-    :conditions => {:method => :get}
-  }
-  map.delete_response '/surveys/:survey_id/responses/:response_id', {
-    :controller => 'SurveyResponses', :action => 'destroy', 
-    :conditions => {:method => :delete}
+  map.connect '/fields/:field_id', {
+    :controller => 'Fields', :action => 'destroy',
+    :conditions => { :method => :delete }
   }
 =end
 

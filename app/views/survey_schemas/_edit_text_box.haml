@@ -1,4 +1,5 @@
 .text_box
-  %span.prompt= field.prompt
+  %span.prompt
+    %input{:name => "field#{field.id}[prompt]", :value => field.prompt}
   %br
-  %textarea{:name => "field#{field.id}"}
+  %textarea{:disabled => true, :name => "field#{field.id}", :class => "display"}

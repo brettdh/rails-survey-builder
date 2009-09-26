@@ -1,3 +1,5 @@
 .text_box
-  %span.prompt= field.prompt
-  %input{:name => "field#{field.id}"}
+  %span.prompt
+    %input{:name => "field#{field.id}[prompt]", :value => field.prompt}
+    
+  %input{:name => "field#{field.id}", :class => "display", :disabled => true}
