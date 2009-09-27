@@ -1,9 +1,9 @@
 .edit_field_group
-  %h3= "Field Group #{field_group.sort_order} (" + |
-        delete_field_group_link(field_group) + ")" |
-  - new_or_existing = field_group.new_record? ? 'new' : 'existing'
-  - prefix = "survey[#{new_or_existing}_field_group_attributes][]"
-  - fields_for prefix, field_group do |field_group_form|
+  - prefix = fields_prefix_string(edit_field_group.survey_schema, edit_field_group)
+  - fields_for prefix, edit_field_group do |field_group_form|
+    %h3= "Field Group #{edit_field_group.sort_order} (" + |
+          delete_field_group_link(edit_field_group,       |
+                                  field_group_form) + ")" |
     .edit_title
       Title:
       = field_group_form.text_field :title
@@ -11,10 +11,15 @@
       Preamble: 
       = field_group_form.text_area :preamble
   
-  - field_group.fields.each do |field|
-    = render_field(field)
-    = add_field_link(field_group, field.sort_order)
-    &middot;
-    = delete_field_link(field)
-    %br
-    %br
+    - edit_field_group.fields.each do |field|
+      - prefix = fields_prefix_string(field.field_group, field)
+      - fields_for prefix, field do |field_form|
+        .edit_field
+          = field_form.text_field :prompt
+          = render_field(field, field_form)
+        = add_field_link(field, field_form)
+        &middot;
+        = delete_field_link(field, field_form)
+        %br
+        %br
+    = add_field_group_link(edit_field_group, field_group_form)

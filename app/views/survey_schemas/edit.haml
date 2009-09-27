@@ -1,13 +1,14 @@
-%form.edit_survey{ :name => "survey#{@survey.id}" }
+- form_for @survey do |f|
   %h1= "Editing Survey #{@survey.id}"
   .edit_title
-    Title: 
-    %input{:name => 'survey[title]', :value => @survey.title}
+    = f.label "Title: "
+    = f.text_field :title
   .edit_preamble
-    Preamble: 
-    %textarea{:name => 'survey[preamble]'}= @survey.preamble
-  - @survey.field_groups.each do |field_group|
-    = render :partial => 'edit_field_group',   |
-      :locals => {:field_group => field_group} |
-    
-    = add_field_group_link(@survey, field_group.sort_order)
+    = f.label "Preamble: "
+    = f.text_area :preamble
+    -#  - @survey.field_groups.each do |field_group|
+    -#    = render :partial => 'edit_field_group',   |
+    -#      :locals => {:field_group => field_group} |
+    = render :partial => 'edit_field_group', :collection => @survey.field_groups
+
+  = submit_tag

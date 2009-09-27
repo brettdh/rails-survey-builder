@@ -12,8 +12,8 @@ ActionController::Routing::Routes.draw do |map|
     :conditions => { :method => :delete }
   }
 
-  map.resources :surveys, :controller => 'SurveySchemas' do |survey|
-    survey.resources :responses, :controller => 'SurveyResponses'
+  map.resources :survey_schemas, :controller => 'SurveySchemas' do |survey|
+    survey.resources :survey_responses, :controller => 'SurveyResponses'
   end
 
 =begin If we do all the processing in the SurveySchemasController,

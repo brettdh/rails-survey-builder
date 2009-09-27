@@ -1,1 +1,3 @@
-%input{:name => "field#{field.id}[prompt]", :class => :option, :value => field.prompt}
+- prefix = fields_prefix_string(field.superfields, field)
+- fields_for prefix, field do |option_form|
+  = option_form.text_field :prompt

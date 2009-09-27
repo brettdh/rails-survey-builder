@@ -1,15 +1,12 @@
-.option_container
-  %span.prompt= field.prompt
-  %br
-  %select{:name => "field#{field.id}"}
-    - field.subfields.each do |subfield|
-      %option{:value => subfield.prompt}= subfield.prompt
-  %br
+%select{:name => "field#{field.id}"}
   - field.subfields.each do |subfield|
-    = render_field(subfield)
-    = delete_subfield_link(subfield)
-    %br
-  = add_subfield_link(field)
+    %option{:value => subfield.prompt}= subfield.prompt
+%br
+- field.subfields.each do |subfield|
+  = render_field(subfield, form)
+  = delete_subfield_link(subfield, form)
+  %br
+= add_subfield_link(field, form)
   
 -# Maybe support an "Other" option if an option has a subfield;
 -#  we'd need a javascript listener to enable/disable the attached text box
