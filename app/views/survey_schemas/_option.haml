@@ -1,0 +1,6 @@
+- if @editing
+  - prefix = fields_prefix_string(nil, "subfield", field)
+  - above_form.fields_for prefix, field do |option_form|
+    = option_form.text_field :prompt
+- else
+  = field.prompt

@@ -1,7 +1,0 @@
-%br
-- field.subfields.each do |subfield|
-  %input{:type => :radio, :name => "field#{field.id}", :value => subfield.prompt}
-    = render_field(subfield, form)
-  = delete_subfield_link(subfield, form)
-  %br
-= add_subfield_link(field, form)

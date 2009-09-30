@@ -4,6 +4,6 @@
   -@surveys.each do |survey|
     %tr
       %td
-        %a{:href => survey_schema_url(survey.id)}
+        %a{:href => edit_survey_schema_url(survey.id)}
           =survey.id
       %td= survey.title

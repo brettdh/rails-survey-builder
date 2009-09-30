@@ -26,11 +26,11 @@ class SurveySchemasController < ApplicationController
   end
 
   def show
-    # @survey = SurveySchema.find(params[:id])
+
   end
 
   def edit
-    
+    @editing = true
   end
 
   def update

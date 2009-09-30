@@ -1,5 +1,5 @@
 %form.survey{ :name => "survey#{@survey.id}" }
-  %h1.title= @survey.title
+  %h1.title= @survey.title  + "("                                |
+       + link_to("edit", edit_survey_schema_path(@survey)) + ")" |
   %h3.preamble= @survey.preamble
-  - @survey.field_groups.each do |field_group|
-    = render :partial => 'show_field_group', :locals => {:field_group => field_group}
+  = render :partial => 'show_field_group', :collection => @survey.field_groups

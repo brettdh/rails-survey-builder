@@ -1,6 +1,8 @@
 .field_group
-  %h4.title= field_group.title
-  %h5.preamble= field_group.preamble
-  - field_group.fields.each do |field|
+  %h4.title= show_field_group.title
+  %h5.preamble= show_field_group.preamble
+  - show_field_group.fields.each do |field|
+    = field.prompt
     = render_field(field)
+    %br
     %br
