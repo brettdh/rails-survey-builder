@@ -1,21 +1,44 @@
 module SurveySchemasHelper
-  def render_field(field, above_form=nil)
-    render(:partial => ("#{field.type.underscore}"), 
+  def render_field(the_field, above_form=nil)
+    render(:partial => ("#{the_field.type.underscore}"), 
            :locals => { 
-             :field => field, :above_form => above_form
+             :field => the_field, :above_form => above_form
            })
   end
 
-  def fields_prefix_string(owner_model, owned_model, obj)
-    new_or_existing = obj.new_record? ? 'new' : 'existing'
-    if owner_model.nil? then
-      prefix = "#{new_or_existing}_#{owned_model}_attributes[]"
-    else
-      prefix = "#{owner_model}[#{new_or_existing}_#{owned_model}_attributes][]"
-    end
-    prefix
+  def new_or_existing(model)
+    model.new_record? ? 'new' : 'existing'
   end
 
+  def fields_for_field_group(field_group, &block)
+    fg_prefix = new_or_existing(field_group)
+    ff_prefix = "survey[#{fg_prefix}_field_group_attributes][]"
+    fields_for(ff_prefix, field_group, &block)
+  end
+
+  def fields_for_field(field, &block)
+    fg = field.field_group
+    fg_prefix = new_or_existing(fg)
+    f_prefix = new_or_existing(field)
+    ff_prefix = "survey[#{fg_prefix}_field_group_attributes][#{fg.id}]"
+    ff_prefix += "[#{f_prefix}_field_attributes][]"
+    fields_for(ff_prefix, field, &block)
+  end
+
+  def fields_for_subfield(subfield, &block)
+    container = subfield.superfields
+    fg = container.field_group
+
+    sf_prefix = new_or_existing(subfield)
+    fg_prefix = new_or_existing(fg)
+    f_prefix = new_or_existing(container)
+
+    ff_prefix = "survey[#{fg_prefix}_field_group_attributes][#{fg.id}]"
+    ff_prefix += "[#{f_prefix}_field_attributes][#{container.id}]"
+    ff_prefix += "[#{sf_prefix}_subfield_attributes][]"
+    fields_for(ff_prefix, subfield, &block)
+  end
+  
   def add_field_group_link(survey, form)
     link_to('add field group', '#')
   end

@@ -4,8 +4,7 @@
 %br
 - if @editing
   - field.subfields.each do |subfield|
-    = render_field(subfield, above_form)
-    = delete_subfield_link(subfield, above_form)
+    = render_field(subfield)
     %br
   = add_subfield_link(field, above_form)
   

@@ -2,8 +2,6 @@
 - field.subfields.each do |subfield|
   %input{:type => :checkbox, :name => "field#{field.id}", :value => subfield.prompt}
     = render_field(subfield, above_form)
-  - if @editing
-    = delete_subfield_link(subfield, above_form)
   %br
 - if @editing
   = add_subfield_link(field, above_form)

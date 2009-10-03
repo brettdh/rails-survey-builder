@@ -1,5 +1,4 @@
-- prefix = fields_prefix_string("survey", "field_group", edit_field_group)
-- fields_for prefix, edit_field_group do |field_group_form|
+- fields_for_field_group edit_field_group do |field_group_form|
   .field_group
     %h3= "Field Group #{edit_field_group.sort_order} (" + |
           delete_field_group_link(edit_field_group,       |
@@ -12,8 +11,7 @@
       = field_group_form.text_area :preamble
     
     - edit_field_group.fields.each do |field|
-      - fg_prefix = fields_prefix_string(nil, "field", field)
-      - field_group_form.fields_for fg_prefix, field do |field_form|
+      - fields_for_field field do |field_form|
         .edit_field
           = field_form.text_field :prompt
           = render_field(field, field_form)
