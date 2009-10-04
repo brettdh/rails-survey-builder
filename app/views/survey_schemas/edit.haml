@@ -1,13 +1,25 @@
 - form_for @survey do |f|
-  %h1= "Editing " + link_to(@survey.title.nil? ?               |
-                            "Untitled Survey" : @survey.title, |
-                            survey_schema_path(@survey))       |
+  %h1
+    - if @survey.new_record?
+      = "New survey"
+    - else
+      = "Editing " + link_to (@survey.title.nil? ?               |
+                             "Untitled Survey" : @survey.title), |
+                             survey_schema_path(@survey)         |
   .edit_title
     = f.label "Title: "
     = f.text_field :title
   .edit_preamble
     = f.label "Preamble: "
-    = f.text_area :preamble
-  = render :partial => 'edit_field_group', :collection => @survey.field_groups
-
+    %br
+    = f.text_area :preamble, :rows => 5
+  %br
+  #field_groups
+    - @survey.field_groups.each do |edit_field_group|
+      = render :partial => 'edit_field_group', :locals => { |
+          :edit_field_group => edit_field_group             |
+        }                                                   |
+      %br
+  = add_field_group_link(@survey, f)
+  %br
   = submit_tag

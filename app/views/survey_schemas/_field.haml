@@ -1,0 +1,5 @@
+.field_chooser{ :id => "field#{field.id}" }
+  - field_types = ["SingleLineTextBox", "TextBox", "ComboContainer", "CheckContainer", "RadioContainer"]
+  - field_types.each do |type|
+    = choose_field_type_link("field#{field.id}", type)
+    %br

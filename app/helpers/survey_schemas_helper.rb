@@ -40,19 +40,30 @@ module SurveySchemasHelper
   end
   
   def add_field_group_link(survey, form)
-    link_to('add field group', '#')
+    link_to_function 'add field group' do |page|
+      page.insert_html :bottom, :field_groups, {
+        :partial => 'edit_field_group',
+        :object => FieldGroup.new
+      }
+    end
   end
 
   def delete_field_group_link(field_group, form)
-    link_to('delete', '#')
+    link_to_function 'delete', "$(this).up('.field_group').remove()"
   end
 
   def add_field_link(field_group, form)
-    link_to('add field', '#')
+    div_id = "field_group_#{field_group.id}_fields"
+    link_to_function 'add field' do |page|
+      page.insert_html(:bottom, div_id, {
+        :partial => 'field', 
+        :object => Field.new
+      })
+    end
   end
 
   def delete_field_link(field, form)
-    link_to('delete field', '#')
+    link_to_function 'delete', "$(this).up('.field').remove()"
   end
 
   def add_subfield_link(superfield, form)
@@ -61,5 +72,20 @@ module SurveySchemasHelper
 
   def delete_subfield_link(subfield, form)
     link_to('delete', '#')
+  end
+
+  def choose_field_type_link(chooser_div, type_str)
+    link_to(type_str, '#')
+=begin
+    link_to_function type_str do |page|
+      klass = Kernel.const_get(type_str)
+      page.replace_html chooser_div, {
+        :partial => type_str.underscore,
+        :locals => {
+          :field => klass.new
+        }
+      }
+    end
+=end
   end
 end

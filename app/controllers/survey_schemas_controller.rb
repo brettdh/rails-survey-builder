@@ -22,7 +22,13 @@ class SurveySchemasController < ApplicationController
   end
 
   def create
-    
+    @survey = SurveySchema.new(params[:survey])
+    if @survey.save
+      flash[:notice] = "Successfully saved survey."
+      redirect_to survey_schemas_path
+    else
+      render :action => 'new'
+    end
   end
 
   def show
@@ -34,7 +40,14 @@ class SurveySchemasController < ApplicationController
   end
 
   def update
+    params[:survey][:existing_field_group_attributes] ||= {}
 
+    if @survey.update_attributes(params[:survey])
+      flash[:notice] = "Successfully saved survey."
+      redirect_to survey_schema_path(@survey)
+    else
+      render :action => 'edit'
+    end
   end
 
   def destroy

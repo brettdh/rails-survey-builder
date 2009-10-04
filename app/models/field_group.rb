@@ -1,6 +1,6 @@
 class FieldGroup < ActiveRecord::Base
   has_many_polymorphs :fields, {
-    :from => [:text_boxes, :radio_containers, 
+    :from => [ :single_line_text_boxes, :text_boxes, :radio_containers, 
               :check_containers, :combo_containers, :options], 
     :order => 'fields.sort_order'}
   belongs_to :survey_schema

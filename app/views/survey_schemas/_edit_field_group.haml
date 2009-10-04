@@ -8,16 +8,17 @@
       = field_group_form.text_field :title
     .field_group_preamble
       Preamble: 
-      = field_group_form.text_area :preamble
+      %br
+      = field_group_form.text_area(:preamble, :rows => 5)
     
-    - edit_field_group.fields.each do |field|
-      - fields_for_field field do |field_form|
-        .edit_field
-          = field_form.text_field :prompt
-          = render_field(field, field_form)
-        = add_field_link(field, field_form)
-        &middot;
-        = delete_field_link(field, field_form)
-        %br
-        %br
-  = add_field_group_link(edit_field_group, field_group_form)
+    .fields{:id => "field_group_#{edit_field_group.id}_fields"}
+      - edit_field_group.fields.each do |field|
+        - fields_for_field field do |field_form|
+          .field
+            = field_form.text_field :prompt
+            = render_field(field, field_form)
+          = delete_field_link(field, field_form)
+          %br
+          %br
+    = add_field_link(edit_field_group, field_group_form)
+    %br
