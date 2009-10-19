@@ -1,6 +1,6 @@
 - if @editing
   - fields_for_subfield field do |subfield_form|
     = subfield_form.text_field :prompt
-    = delete_subfield_link(field, subfield_form)
+    = delete_subfield_link(field)
 - else
   = field.prompt

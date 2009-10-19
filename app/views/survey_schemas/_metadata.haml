@@ -1,0 +1,6 @@
+- str = (@survey.title.blank? ? "Untitled Survey" : @survey.title) + " ("
+- str += link_to("edit", edit_survey_schema_path(@survey)) + ")"
+- str += " (" + link_to("back to list", survey_schemas_path) + ")"
+%h1.title= str
+            
+%h3.preamble= @survey.preamble

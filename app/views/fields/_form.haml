@@ -1,0 +1,5 @@
+- form_for @field do |f|
+  .field
+    - field_types = ["SingleLineTextBox", "TextBox", "ComboContainer", "CheckContainer", "RadioContainer"]
+    - field_types.each do |type|
+      = submit_tag type, :name => "field_type"

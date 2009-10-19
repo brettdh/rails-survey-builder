@@ -1,26 +1,36 @@
 class FieldGroupsController < ApplicationController
-  before_filter :find_group, {:except => [:create]}
+  before_filter :find_survey
+  before_filter :find_group, {:only => [:delete, :destroy]}
 
   private
 
+  def find_survey
+    @survey = SurveySchema.find(params[:schema_id])
+  end
+
   def find_group
-    @group = FieldGroup.find(params[:group_id])
+    @group = FieldGroup.find(params[:field_group_id])
   end
 
   public
 
-  def create
-    group = FieldGroup.create(params[:new_field_group])
-    redirect_to edit_survey_path(group.survey_schema)
+  def new
+    @group = FieldGroup.new
   end
 
-  def update
-    @group.update_attributes(params[:survey
+  def create
+    @group = FieldGroup.new(params[:field_group])
+    @group.survey_schema = @survey
+    @group.save!
+    redirect_to edit_survey_schema_path(@survey)
+  end
+
+  def delete
+
   end
 
   def destroy
-    survey = @group.survey_schema
     @group.destroy
-    redirect_to edit_survey_path(survey)
+    redirect_to edit_survey_schema_path(@survey)
   end
 end

@@ -1,0 +1,4 @@
+- form_for @field, { :url => subfields_path(@superfield.survey_schema, @superfield.field_group, @superfield)} do |f|
+  .field
+    = f.text_field :prompt
+    = f.submit

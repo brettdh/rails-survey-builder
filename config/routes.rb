@@ -15,34 +15,55 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :survey_schemas, :controller => 'SurveySchemas' do |survey|
     survey.resources :survey_responses, :controller => 'SurveyResponses'
   end
+  
+  map.delete_survey_schema '/survey_schemas/:id/delete', { 
+    :controller => 'SurveySchemas', :action => 'delete', 
+    :conditions => { :method => :get }
+  }
 
-=begin If we do all the processing in the SurveySchemasController,
-       we won't need these controllers and routes.
-  map.field_groups '/field_groups/', {
+  map.new_field_group '/survey_schemas/:schema_id/field_groups/new', {
+    :controller => 'FieldGroups', :action => 'new',
+    :conditions => { :method => :get }
+  }
+  map.field_groups '/survey_schemas/:schema_id/field_groups', {
     :controller => 'FieldGroups', :action => 'create',
     :conditions => { :method => :post }
   }
-  map.field_group '/field_groups/:group_id', {
-    :controller => 'FieldGroups', :action => 'update',
-    :conditions => { :method => :put }
+  map.delete_field_group '/survey_schemas/:schema_id/field_groups/:field_group_id/delete', {
+    :controller => 'FieldGroups', :action => 'delete',
+    :conditions => { :method => :get }
   }
-  map.field_group '/field_groups/:group_id', {
+  map.field_group '/survey_schemas/:schema_id/field_groups/:field_group_id', {
     :controller => 'FieldGroups', :action => 'destroy',
     :conditions => { :method => :delete }
   }
 
-  map.fields '/fields', {
+  map.new_field '/survey_schemas/:schema_id/field_groups/:field_group_id/fields/new', {
+    :controller => 'Fields', :action => 'new',
+    :conditions => { :method => :get }
+  }
+  map.fields '/survey_schemas/:schema_id/field_groups/:field_group_id/fields', {
     :controller => 'Fields', :action => 'create',
     :conditions => { :method => :post }
   }
-  map.field '/fields/:field_id', {
-    :controller => 'Fields', :action => 'update',
-    :conditions => { :method => :put }
+  map.delete_field '/survey_schemas/:schema_id/field_groups/:field_group_id/fields/:field_id/delete', {
+    :controller => 'Fields', :action => 'delete',
+    :conditions => { :method => :get }
   }
-  map.connect '/fields/:field_id', {
+  map.field '/survey_schemas/:schema_id/field_groups/:field_group_id/fields/:field_id', {
     :controller => 'Fields', :action => 'destroy',
     :conditions => { :method => :delete }
   }
-=end
+
+  map.new_subfield '/survey_schemas/:schema_id/field_groups/:field_group_id/' +
+                   'fields/:superfield_id/subfields/new', {
+    :controller => 'Fields', :action => 'new',
+    :conditions => { :method => :get }
+  }
+  map.subfields '/survey_schemas/:schema_id/field_groups/:field_group_id/' +
+                'fields/:superfield_id/subfields', {
+    :controller => 'Fields', :action => 'create',
+    :conditions => { :method => :post }
+  }
 
 end

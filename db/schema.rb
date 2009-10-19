@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090829030656) do
+ActiveRecord::Schema.define(:version => 20091018015006) do
 
   create_table "field_groups", :force => true do |t|
     t.integer  "sort_order"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20090829030656) do
     t.integer  "field_group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "sort_order"
   end
 
   create_table "field_links", :force => true do |t|
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20090829030656) do
     t.integer  "superfield_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "sort_order"
   end
 
   create_table "field_responses", :force => true do |t|

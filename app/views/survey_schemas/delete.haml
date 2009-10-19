@@ -1,0 +1,5 @@
+%h1= "Really delete survey?"
+- form_for @survey, :html => {:method => :delete} do |f|
+  = submit_tag "Yes"
+- form_tag :survey_schema, {:url => survey_schemas_path, :method => :get } do |f|
+  = submit_tag "No"

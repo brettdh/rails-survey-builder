@@ -1,0 +1,12 @@
+- form_for @group do |f|
+  .field_group
+    .field_group_title
+      Title:
+      %br
+      = f.text_field :title
+    .field_group_preamble
+      Preamble:
+      %br
+      = f.text_area :preamble
+    %br
+    = submit_tag

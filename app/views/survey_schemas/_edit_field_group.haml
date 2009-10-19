@@ -1,8 +1,7 @@
 - fields_for_field_group edit_field_group do |field_group_form|
   .field_group
     %h3= "Field Group #{edit_field_group.sort_order} (" + |
-          delete_field_group_link(edit_field_group,       |
-                                  field_group_form) + ")" |
+          delete_field_group_link(edit_field_group) + ")" |
     .field_group_title
       Title:
       = field_group_form.text_field :title
@@ -11,14 +10,14 @@
       %br
       = field_group_form.text_area(:preamble, :rows => 5)
     
-    .fields{:id => "field_group_#{edit_field_group.id}_fields"}
+    .fields{:id => "field_group_#{edit_field_group.object_id}_fields"}
       - edit_field_group.fields.each do |field|
         - fields_for_field field do |field_form|
           .field
             = field_form.text_field :prompt
-            = render_field(field, field_form)
-          = delete_field_link(field, field_form)
+            = render_field(field)
+          = delete_field_link(field)
           %br
           %br
-    = add_field_link(edit_field_group, field_group_form)
+    = add_field_link(edit_field_group)
     %br

@@ -1,0 +1,4 @@
+%h1= "Really delete field?"
+- form_for :delete_field, :url => @delete_path, :html => {:method => :delete} do |f|
+  = submit_tag "Delete"
+= link_to "Cancel", edit_survey_schema_path(@field.survey_schema)

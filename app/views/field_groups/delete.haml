@@ -1,0 +1,4 @@
+%h1= "Really delete field group?"
+- form_for @group, :url => field_group_path(@group.survey_schema, @group), :html => {:method => :delete} do |f|
+  = submit_tag "Delete"
+= link_to "Cancel", edit_survey_schema_path(@group.survey_schema)

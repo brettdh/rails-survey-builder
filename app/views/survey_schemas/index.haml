@@ -1,10 +1,14 @@
 %h1
   Surveys
 %table
+  %th ID
+  %th Name
+  %th Actions
   -@surveys.each do |survey|
     %tr
-      %td
-        %a{:href => edit_survey_schema_url(survey.id)}
-          =survey.id
+      %td= survey.id
       %td= survey.title
+      %td
+        = link_to "Edit", edit_survey_schema_path(survey)
+        = link_to "Delete", delete_survey_schema_path(survey)
 = link_to "Create new survey", new_survey_schema_path
