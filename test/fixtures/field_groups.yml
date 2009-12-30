@@ -2,19 +2,19 @@
 
 fieldgroup_1:
   survey_schema_id: 1
-  preamble: Preamble for group 1.
-  created_at: 2009-08-29 20:29:03 Z
-  title: Group 1
-  updated_at: 2009-08-29 20:29:03 Z
+  preamble: one one one
+  created_at: 2009-12-20 19:40:59 Z
+  title: One
+  updated_at: 2009-12-20 19:40:59 Z
   sort_order: 1
   id: 1
 
 fieldgroup_2:
   survey_schema_id: 1
-  preamble: Preamble for group 2.
-  created_at: 2009-08-29 20:30:15 Z
-  title: Group 2
-  updated_at: 2009-08-29 20:30:15 Z
+  preamble: test
+  created_at: 2009-12-30 21:45:37 Z
+  title: test test
+  updated_at: 2009-12-30 21:45:37 Z
   sort_order: 2
   id: 2
 
