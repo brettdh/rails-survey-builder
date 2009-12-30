@@ -12,10 +12,8 @@
     = f.text_area :preamble, :rows => 5
   %br
   #field_groups
-    - @survey.field_groups.each do |edit_field_group|
-      = render :partial => 'edit_field_group', :locals => { |
-          :edit_field_group => edit_field_group             |
-        }                                                   |
+    - f.fields_for :field_groups do |field_group_form|
+      = render :partial => 'edit_field_group', :locals => {:f => field_group_form}
       %br
   = add_field_group_link(@survey)
   %br

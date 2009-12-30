@@ -1,7 +1,16 @@
-%br
-- field.subfields.each do |subfield|
-  %input{:type => :checkbox, :name => "field#{field.id}", :value => subfield.prompt}
-    = render_field(subfield)
-  %br
 - if @editing
+  - field = f.object
+%br
+- if @editing
+  - f.fields_for :subfields do |subfield_form|
+    %input{:type => :checkbox, :name => "field#{field.id}", |
+           :value => subfield_form.object.prompt}           |
+      = render_field_form(subfield_form)
+    %br
   = add_subfield_link(field)
+- else
+  - field.subfields.each do |subfield|
+    %input{:type => :checkbox, :name => "field#{field.id}", |
+           :value => subfield.prompt}                       |
+      = render_field(subfield)
+    %br

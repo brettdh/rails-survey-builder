@@ -1,10 +1,12 @@
+- if @editing
+  - field = f.object
 %select{:name => "field#{field.id}"}
   - field.subfields.each do |subfield|
     %option{:value => subfield.prompt}= subfield.prompt
 %br
 - if @editing
-  - field.subfields.each do |subfield|
-    = render_field(subfield)
+  - f.fields_for :subfields do |subfield_form|
+    = render_field_form(subfield_form)
     %br
   = add_subfield_link(field)
 

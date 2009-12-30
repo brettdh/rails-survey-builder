@@ -12,9 +12,8 @@ class Field < ActiveRecord::Base
   has_one :field_groups_field
   has_one :field_group, :through => :field_groups_field
 
-  after_save :save_subfields
-
   validates_associated :subfields
+  accepts_nested_attributes_for :subfields, :allow_destroy => true
 
   # shortcut helper.
   def survey_schema
@@ -25,26 +24,28 @@ class Field < ActiveRecord::Base
     end
   end
   
-  def new_subfield_attributes=(subfield_attributes)
-    subfield_attributes.each do |attributes|
-      subfields.build(attributes)
-    end
-  end
-  
-  def existing_subfield_attributes=(subfield_attributes)
-    subfields.reject(&:new_record?).each do |subfield|
-      attributes = subfield_attributes[subfield.id.to_s]
-      if attributes
-        subfield.attributes = attributes
-      else
-        subfields.destroy(subfield)
-      end
-    end
-  end
+#   after_save :save_subfields
 
-  def save_subfields
-    subfields.each do |subfield|
-      subfield.save(false)
-    end
-  end
+#   def new_subfield_attributes=(subfield_attributes)
+#     subfield_attributes.each do |attributes|
+#       subfields.build(attributes)
+#     end
+#   end
+  
+#   def existing_subfield_attributes=(subfield_attributes)
+#     subfields.reject(&:new_record?).each do |subfield|
+#       attributes = subfield_attributes[subfield.id.to_s]
+#       if attributes
+#         subfield.attributes = attributes
+#       else
+#         subfields.destroy(subfield)
+#       end
+#     end
+#   end
+
+#   def save_subfields
+#     subfields.each do |subfield|
+#       subfield.save(false)
+#     end
+#   end
 end

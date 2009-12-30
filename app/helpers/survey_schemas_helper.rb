@@ -1,4 +1,11 @@
 module SurveySchemasHelper
+  def render_field_form(form_builder)
+    render(:partial => ("#{form_builder.object.type.underscore}"), 
+           :locals => {
+             :f => form_builder
+           })
+  end
+
   def render_field(the_field)
     render(:partial => ("#{the_field.type.underscore}"), 
            :locals => { 

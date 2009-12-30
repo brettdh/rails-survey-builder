@@ -42,18 +42,12 @@ class SurveySchemasController < ApplicationController
   end
 
   def update
-    params[:survey_schema][:existing_field_group_attributes] ||= {}
-
     if @survey.update_attributes(params[:survey_schema])
       flash[:notice] = "Successfully saved survey."
       redirect_to edit_survey_schema_path(@survey)
     else
       render :action => 'edit'
     end
-  end
-
-  def delete
-    
   end
 
   def destroy
