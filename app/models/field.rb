@@ -23,29 +23,4 @@ class Field < ActiveRecord::Base
       self.field_group.survey_schema
     end
   end
-  
-#   after_save :save_subfields
-
-#   def new_subfield_attributes=(subfield_attributes)
-#     subfield_attributes.each do |attributes|
-#       subfields.build(attributes)
-#     end
-#   end
-  
-#   def existing_subfield_attributes=(subfield_attributes)
-#     subfields.reject(&:new_record?).each do |subfield|
-#       attributes = subfield_attributes[subfield.id.to_s]
-#       if attributes
-#         subfield.attributes = attributes
-#       else
-#         subfields.destroy(subfield)
-#       end
-#     end
-#   end
-
-#   def save_subfields
-#     subfields.each do |subfield|
-#       subfield.save(false)
-#     end
-#   end
 end

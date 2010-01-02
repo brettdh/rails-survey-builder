@@ -1,6 +1,6 @@
 .field_group
   %h3= "Field Group #{f.object.sort_order} (" + |
-        delete_field_group_link(f.object) + ")" |
+        delete_field_group_link(f) + ")" |
   .field_group_title
     = f.label :title, "Title:"
     = f.text_field :title
@@ -13,7 +13,7 @@
       .field
         = field_form.text_field :prompt
         = render_field_form(field_form)
-      = delete_field_link(field_form.object)
+      = delete_field_link(field_form)
       %br
       %br
   = add_field_link(f.object)

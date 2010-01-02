@@ -6,8 +6,13 @@ RAILS_DEFAULT_LOGGER = nil unless defined? RAILS_DEFAULT_LOGGER
 require 'has_many_polymorphs/reflection'
 require 'has_many_polymorphs/association'
 require 'has_many_polymorphs/class_methods'
-require 'has_many_polymorphs/nested_attributes'
-require 'has_many_polymorphs/autosave_association'
+if Rails::VERSION::STRING == "2.3.5"
+  # XXX: how to support the ugly copy/paste/patch changes for many versions
+  #      from 2.3.0-2.3.5 and beyond?
+  # For now it only works for Rails 2.3.5
+  require 'has_many_polymorphs/nested_attributes'
+  require 'has_many_polymorphs/autosave_association'
+end
 
 require 'has_many_polymorphs/support_methods'
 require 'has_many_polymorphs/base'

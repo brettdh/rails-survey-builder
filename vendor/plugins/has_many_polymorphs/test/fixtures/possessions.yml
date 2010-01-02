@@ -1,0 +1,9 @@
+volkswagon:
+    id: 1
+    description: 1976 2-door Volkswagon Rabbit
+    possession_type: Car
+
+lespaul:
+    id: 2
+    description: 1969 6-string Gibson Les Paul
+    possession_type: Guitar

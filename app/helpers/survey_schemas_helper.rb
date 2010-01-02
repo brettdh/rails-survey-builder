@@ -12,69 +12,78 @@ module SurveySchemasHelper
              :field => the_field
            })
   end
-
-  def new_or_existing(model)
-    model.new_record? ? 'new' : 'existing'
-  end
-
-  def fields_for_field_group(field_group, &block)
-    fg_prefix = new_or_existing(field_group)
-    ff_prefix = "survey_schema[#{fg_prefix}_field_group_attributes][]"
-    fields_for(ff_prefix, field_group, &block)
-  end
-
-  def fields_for_field(field, &block)
-    fg = field.field_group
-    fg_prefix = new_or_existing(fg)
-    f_prefix = new_or_existing(field)
-    ff_prefix = "survey_schema[#{fg_prefix}_field_group_attributes][#{fg.id}]"
-    ff_prefix += "[#{f_prefix}_field_attributes][]"
-    fields_for(ff_prefix, field, &block)
-  end
-
-  def fields_for_subfield(subfield, &block)
-    container = subfield.superfields
-    fg = container.field_group
-
-    sf_prefix = new_or_existing(subfield)
-    fg_prefix = new_or_existing(fg)
-    f_prefix = new_or_existing(container)
-
-    ff_prefix = "survey_schema[#{fg_prefix}_field_group_attributes][#{fg.id}]"
-    ff_prefix += "[#{f_prefix}_field_attributes][#{container.id}]"
-    ff_prefix += "[#{sf_prefix}_subfield_attributes][]"
-    fields_for(ff_prefix, subfield, &block)
-  end
   
   def add_field_group_link(survey)
-    link_to 'Add field group', new_field_group_path(survey)
+    add_child_link('Add field group', new_field_group_path(survey), :field_groups)
   end
 
-  def delete_field_group_link(field_group)
-    link_to("delete", delete_field_group_path(field_group.survey_schema, 
-                                              field_group))
+  def delete_field_group_link(fg_form_builder)
+    field_group = fg_form_builder.object
+    remove_child_link("delete", 
+                      delete_field_group_path(field_group.survey_schema, 
+                                              field_group),
+                      fg_form_builder)
   end
 
   def add_field_link(field_group)
-    link_to 'Add field', new_field_path(field_group.survey_schema, field_group)
+    add_child_link('Add field', new_field_path(field_group.survey_schema, field_group),
+                   :fields)
   end
 
-  def delete_field_link(field)
-    link_to("delete", delete_field_path(field.survey_schema,
+  def delete_field_link(field_form_builder)
+    field = field_form_builder.object
+    remove_child_link("delete", 
+                      delete_field_path(field.survey_schema,
                                         field.field_group,
-                                        field))
+                                        field),
+                      field_form_builder)
   end
 
   def add_subfield_link(superfield)
-    link_to('add', new_subfield_path(superfield.survey_schema, 
+    add_child_link('add', 
+                   new_subfield_path(superfield.survey_schema, 
                                      superfield.field_group,
-                                     superfield))
+                                     superfield),
+                   :subfields)
   end
 
-  def delete_subfield_link(subfield)
-    link_to('delete', delete_field_path(subfield.survey_schema,
+  def delete_subfield_link(subfield_form_builder)
+    subfield = subfield_form_builder.object
+    remove_child_link('delete', 
+                      delete_field_path(subfield.survey_schema,
                                         subfield.superfields.field_group,
-                                        subfield))
+                                        subfield),
+                      subfield_form_builder)
   end
 
+  # Borrowed these from [timriley,ryanb]/complex-form-examples
+
+  # since these helpers have links that point to real non-JS URLs, make sure
+  #  that the related Javascript includes "return false" in the onClick handler.
+  def remove_child_link(name, url, f)
+    f.hidden_field(:_destroy) + link_to(name, url, :class => "remove_child")
+  end
+  
+  def add_child_link(name, url, association)
+    link_to(name, url, :class => "add_child", :"data-association" => association)
+  end
+  
+  def new_child_fields_template(form_builder, association, options = {})
+    content_for "#{association}_fields_template" do
+      options[:object] ||= form_builder.object.class.reflect_on_association(association).klass.new
+      options[:partial] ||= association.to_s.singularize
+      options[:form_builder_local] ||= :f
+    
+      content_tag(:div, :id => "#{association}_fields_template", :style => "display: none") do
+        form_builder.fields_for(association, options[:object], :child_index => "new_#{association}") do |f|
+          render(:partial => options[:partial], :locals => {options[:form_builder_local] => f})
+        end
+      end
+    end unless content_given?("#{association}_fields_template")
+  end
+  
+  def content_given?(name)
+    content = instance_variable_get("@content_for_#{name}")
+    ! content.nil?
+  end
 end

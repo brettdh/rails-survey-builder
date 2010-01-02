@@ -84,4 +84,21 @@ ActiveRecord::Schema.define(:version => 0) do
     t.column :updated_at, :datetime, :null => false
   end
 
+  # owners, cars, and guitars are for nested_attributes testing
+  create_table :owners, :force => true do |t|
+    t.string :name
+    t.column :created_at, :datetime, :null => false
+    t.column :updated_at, :datetime, :null => false
+  end
+  
+  create_table :owners_possessions, :force => true do |t|
+    t.integer :owner_id
+    t.integer :possession_id
+    t.string :possession_type
+  end
+  
+  create_table :possessions, :force => true do |t|
+    t.string :possession_type
+    t.string :description
+  end
 end
