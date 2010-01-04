@@ -1,0 +1,34 @@
+.element.field_group
+  - if @editing
+    %h3= "Field Group #{f.object.sort_order} (" + |
+          delete_field_group_link(f) + ")" |
+    .field_group_title
+      = f.label :title, "Title:"
+      = f.text_field :title
+    .field_group_preamble
+      = f.label :preamble, "Preamble:"
+      %br
+      = f.text_area(:preamble, :rows => 5)
+    .fields
+      - f.fields_for :fields do |field_form|
+        .element.field
+          = field_form.text_field :prompt
+          = render_field_form(field_form)
+          %br
+          = delete_field_link(field_form)
+    = "Add field: " 
+    - field_types = %w{ SingleLineTextBox TextBox ComboContainer |
+                        RadioContainer CheckContainer }          |
+    - list = field_types.collect { |field_type| add_field_link(f.object, field_type) }
+    = list.join(" | ")
+    - field_types.each do |field_type|
+      = new_child_fields_template(f, :fields, field_type)
+    %br
+  - else
+    %h4.title= field_group.title
+    %h5.preamble= field_group.preamble
+    - field_group.fields.each do |field|
+      = field.prompt
+      = render_field(field)
+      %br
+      %br

@@ -1,0 +1,11 @@
+- if @editing
+  - field = f.object
+  .element
+    %input{:type => :radio, :name => "field#{field.id}", |
+           :value => field.prompt}                       |
+    = f.text_field :prompt
+    = delete_subfield_link(f)
+- else
+  %input{:type => :radio, :name => "field#{field.id}", |
+         :value => field.prompt}                       |
+  = field.prompt

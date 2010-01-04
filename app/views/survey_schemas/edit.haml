@@ -13,8 +13,14 @@
   %br
   #field_groups
     - f.fields_for :field_groups do |field_group_form|
-      = render :partial => 'edit_field_group', :locals => {:f => field_group_form}
+      = render :partial => 'field_group', :locals => {:f => field_group_form}
       %br
   = add_field_group_link(@survey)
+  = new_child_fields_template(f, :field_groups, "FieldGroup")
   %br
   = submit_tag
+- field_types = %w{ FieldGroup SingleLineTextBox TextBox           |
+                    CheckOption ComboOption RadioOption            |
+                    CheckContainer ComboContainer RadioContainer } |
+- field_types.each do |field_type|
+  = yield ((field_type.underscore.pluralize + "_fields_template").to_sym)

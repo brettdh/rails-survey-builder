@@ -18,7 +18,11 @@ class Field < ActiveRecord::Base
   # shortcut helper.
   def survey_schema
     if self.field_group.nil?
-      self.superfields.survey_schema
+      if self.superfields.nil?
+        nil
+      else
+        self.superfields.survey_schema
+      end
     else
       self.field_group.survey_schema
     end
