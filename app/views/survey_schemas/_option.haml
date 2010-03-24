@@ -1,0 +1,6 @@
+.element.field
+  -# prefix = f.object.superfields.class.to_s.underscore.split("_")[0]
+  = render(:partial => (prefix + "_option"), |
+           :locals => {:f => f})             |
+  = f.hidden_field :type
+  -#= delete_subfield_link(f)

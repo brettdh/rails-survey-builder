@@ -2,20 +2,21 @@
   - if @editing
     %h3= "Field Group #{f.object.sort_order} (" + |
           delete_field_group_link(f) + ")" |
-    .field_group_title
-      = f.label :title, "Title:"
-      = f.text_field :title
+    -#.field_group_title
+    = f.label :title, "Title:"
+    = f.text_field :title
+    %br
     .field_group_preamble
       = f.label :preamble, "Preamble:"
       %br
       = f.text_area(:preamble, :rows => 5)
-    .fields
-      - f.fields_for :fields do |field_form|
-        .element.field
-          = field_form.text_field :prompt
-          = render_field_form(field_form)
-          %br
-          = delete_field_link(field_form)
+
+    - f.fields_for :fields do |field_form|
+      = render(:partial => "field", |
+               :locals => {         |
+                 :f => field_form,  |
+                 :partial => nil    |
+               })                   |
     = "Add field: " 
     - field_types = %w{ SingleLineTextBox TextBox ComboContainer |
                         RadioContainer CheckContainer }          |

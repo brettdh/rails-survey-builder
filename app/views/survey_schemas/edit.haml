@@ -11,12 +11,13 @@
     %br
     = f.text_area :preamble, :rows => 5
   %br
-  #field_groups
+  #field_groups.element
     - f.fields_for :field_groups do |field_group_form|
       = render :partial => 'field_group', :locals => {:f => field_group_form}
       %br
   = add_field_group_link(@survey)
-  = new_child_fields_template(f, :field_groups, "FieldGroup")
+  = new_child_fields_template(f, :field_groups, "FieldGroup",    |
+                              :field_supertype => "field_group") |
   %br
   = submit_tag
 - field_types = %w{ FieldGroup SingleLineTextBox TextBox           |

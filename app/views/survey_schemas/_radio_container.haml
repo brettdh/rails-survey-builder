@@ -3,9 +3,10 @@
 %br
 - if @editing
   - f.fields_for :subfields do |subfield_form|
-    = render_option_form(subfield_form)
+    = render_option_form(subfield_form, "radio")
   = add_subfield_link(field, "RadioOption")
-  = new_child_fields_template(f, :subfields, "Option", {:partial => "radio_option"})
+  = new_child_fields_template(f, :subfields, "RadioOption",   |
+                              {:field_supertype => "option"}) |
 - else
   - field.subfields.each do |subfield|
     = render_option_field(subfield)

@@ -1,22 +1,23 @@
 module SurveySchemasHelper
-  def render_option_form(form_builder)
-    prefix =form_builder.object.superfields.class.to_s.underscore.split("_")[0]
-    render(:partial => (prefix + "_option"),
+  def render_option_form(form_builder, prefix)
+    #prefix =form_builder.object.superfields.class.to_s.underscore.split("_")[0]
+    render(:partial => "option",
            :locals => {
-             :f => form_builder
+             :f => form_builder, :prefix => prefix
            })
   end
   
   def render_option_field(the_field)
-    prefix = the_field.superfields.class.to_s.underscore.split("_")[0]
-    render(:partial => (prefix + "_option"),
+    #prefix = the_field.superfields.class.to_s.underscore.split("_")[0]
+    render(:partial => "option",
            :locals => {
              :field => the_field
            })
   end
   
-  def render_field_form(form_builder)
-    render(:partial => ("#{form_builder.object.class.to_s.underscore}"), 
+  def render_field_form(form_builder, partial=nil)
+    partial ||= "#{form_builder.object.class.to_s.underscore}"
+    render(:partial => partial, 
            :locals => {
              :f => form_builder
            })
@@ -66,7 +67,7 @@ module SurveySchemasHelper
 
   def delete_subfield_link(subfield_form_builder)
     subfield = subfield_form_builder.object
-    if subfield.survey_schema.nil?
+    if subfield.survey_schema.nil? or subfield.superfields.nil?
       delete_link = "javascript:void(0)"
     else
       delete_link = delete_field_path(subfield.survey_schema,
@@ -89,15 +90,32 @@ module SurveySchemasHelper
             :"data-field-type" => field_type.underscore.pluralize)
   end
   
+  # XXX: need to somehow embed the field type in the template divs so that
+  #  we have a way to create new fields of different subtypes.
   def new_child_fields_template(form_builder, association, field_type, options = {})
-    options[:object] ||= Kernel.const_get(field_type).new
     options[:partial] ||= field_type.underscore
     options[:form_builder_local] ||= :f
+    options[:field_supertype] ||= "field"
+    if options[:field_supertype] == "option"
+      options[:object] ||= Option.new
+    else
+      options[:object] ||= Kernel.const_get(field_type).new
+    end
+
     template_name = options[:partial].pluralize
     content_for "#{template_name}_fields_template" do
-      content_tag(:div, :id => "#{template_name}_fields_template", :style => "display: none") do
+      content_tag(:div, :class => "templatecontainer",
+                  :id => "#{template_name}_fields_template",
+                  :style => "display: none") do
         form_builder.fields_for(association, options[:object], :child_index => "new_#{template_name}") do |f|
-          render(:partial => options[:partial], :locals => {options[:form_builder_local] => f})
+          if options[:field_supertype] == "option"
+            prefix = field_type.underscore.split("_")[0]
+            render_option_form(f, prefix)
+          else
+            render(:partial => options[:field_supertype],
+                   :locals => {options[:form_builder_local] => f,
+                               :partial => options[:partial]})
+          end
         end
       end
     end unless content_given?("#{template_name}_fields_template")

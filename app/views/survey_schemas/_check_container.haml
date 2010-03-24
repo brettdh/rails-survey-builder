@@ -3,9 +3,9 @@
 %br
 - if @editing
   - f.fields_for :subfields do |subfield_form|
-    = render_option_form(subfield_form)
+    = render_option_form(subfield_form, "check")
   = add_subfield_link(field, "CheckOption")
-  = new_child_fields_template(f, :subfields, "Option", {:partial => "check_option"})
+  = new_child_fields_template(f, :subfields, "CheckOption", :field_supertype => "option")
 - else
   - field.subfields.each do |subfield|
     = render_option_field(subfield)

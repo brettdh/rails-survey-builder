@@ -1,6 +1,5 @@
-.element
-  - if @editing
-    = f.text_field :prompt
-    = delete_subfield_link(f)
-  - else
-    = field.prompt
+- if @editing
+  = f.text_field :prompt
+  = delete_subfield_link(f)
+- else
+  = field.prompt

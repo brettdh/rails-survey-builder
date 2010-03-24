@@ -6,9 +6,10 @@
 %br
 - if @editing
   - f.fields_for :subfields do |subfield_form|
-    = render_option_form(subfield_form)
+    = render_option_form(subfield_form, "combo")
   = add_subfield_link(field, "ComboOption")
-  = new_child_fields_template(f, :subfields, "Option", {:partial => "combo_option"})
+  = new_child_fields_template(f, :subfields, "ComboOption",    |
+                              {:field_supertype => "option"})  |
 
 -# Maybe support an "Other" option if an option has a subfield;
 -#  we'd need a javascript listener to enable/disable the attached text box

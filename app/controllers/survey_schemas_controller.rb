@@ -42,6 +42,7 @@ class SurveySchemasController < ApplicationController
   end
 
   def update
+    debugger
     if @survey.update_attributes(params[:survey_schema])
       flash[:notice] = "Successfully saved survey."
       redirect_to edit_survey_schema_path(@survey)
