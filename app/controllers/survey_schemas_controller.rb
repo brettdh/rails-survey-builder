@@ -17,11 +17,11 @@ class SurveySchemasController < ApplicationController
   end
 
   def new
-    @survey = SurveySchema.create
+    @survey = SurveySchema.new
+    @editing = true
     render :action => :edit
   end
 
-=begin
   def create
     @survey = SurveySchema.new(params[:survey])
     if @survey.save!
@@ -31,7 +31,6 @@ class SurveySchemasController < ApplicationController
       render :action => 'new'
     end
   end
-=end
 
   def show
 

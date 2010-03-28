@@ -1,7 +1,10 @@
 %h1
-  = "Editing " + link_to((@survey.title.nil? ? |
-      "Untitled Survey" : @survey.title),      |
-        survey_schema_path(@survey))           |
+  -if @survey.new_record?
+    = "Editing new survey"
+  - else
+    = "Editing " + link_to((@survey.title.nil? ? |
+        "Untitled Survey" : @survey.title),      |
+          survey_schema_path(@survey))           |
 - form_for @survey do |f|
   .edit_title
     = f.label "Title: "
