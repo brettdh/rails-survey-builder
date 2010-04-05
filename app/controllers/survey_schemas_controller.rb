@@ -23,11 +23,13 @@ class SurveySchemasController < ApplicationController
   end
 
   def create
-    @survey = SurveySchema.new(params[:survey])
+    @survey = SurveySchema.new(params[:survey_schema])
     if @survey.save!
       flash[:notice] = "Successfully saved survey."
-      redirect_to survey_schemas_path
+      @editing = true
+      render :action => 'edit'
     else
+      flash[:error] = error_messages_for 'survey_schema'
       render :action => 'new'
     end
   end

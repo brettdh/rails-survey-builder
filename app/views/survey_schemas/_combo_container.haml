@@ -7,7 +7,7 @@
 - if @editing
   - f.fields_for :subfields do |subfield_form|
     = render_option_form(subfield_form, "combo")
-  = add_subfield_link(field, "ComboOption")
+  .addbox= add_subfield_link(field, "ComboOption")
   = new_child_fields_template(f, :subfields, "ComboOption",    |
                               {:field_supertype => "option"})  |
 

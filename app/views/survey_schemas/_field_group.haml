@@ -17,11 +17,12 @@
                  :f => field_form,  |
                  :partial => nil    |
                })                   |
-    = "Add field: " 
-    - field_types = %w{ SingleLineTextBox TextBox ComboContainer |
-                        RadioContainer CheckContainer }          |
-    - list = field_types.collect { |field_type| add_field_link(f.object, field_type) }
-    = list.join(" | ")
+    .addbox
+      = "Add field: " 
+      - field_types = %w{ SingleLineTextBox TextBox ComboContainer |
+                          RadioContainer CheckContainer }          |
+      - list = field_types.collect { |field_type| add_field_link(f.object, field_type) }
+      = list.join(" | ")
     - field_types.each do |field_type|
       = new_child_fields_template(f, :fields, field_type)
     %br

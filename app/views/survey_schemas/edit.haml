@@ -5,24 +5,26 @@
     = "Editing " + link_to((@survey.title.nil? ? |
         "Untitled Survey" : @survey.title),      |
           survey_schema_path(@survey))           |
+  = " (" + link_to("back to list", survey_schemas_path) + ")"
 - form_for @survey do |f|
-  .edit_title
+  .element.survey
     = f.label "Title: "
     = f.text_field :title
-  .edit_preamble
+    %br
     = f.label "Preamble: "
     %br
     = f.text_area :preamble, :rows => 5
-  %br
-  #field_groups.element
-    - f.fields_for :field_groups do |field_group_form|
-      = render :partial => 'field_group', :locals => {:f => field_group_form}
-      %br
-  = add_field_group_link(@survey)
-  = new_child_fields_template(f, :field_groups, "FieldGroup",    |
-                              :field_supertype => "field_group") |
-  %br
-  = submit_tag
+    %br
+    #field_groups
+      - f.fields_for :field_groups do |field_group_form|
+        = render :partial => 'field_group', :locals => {:f => field_group_form}
+        %br
+      .addbox
+        = add_field_group_link(@survey)
+    = new_child_fields_template(f, :field_groups, "FieldGroup",    |
+                                :field_supertype => "field_group") |
+    %br
+    = submit_tag
 - field_types = %w{ FieldGroup SingleLineTextBox TextBox           |
                     CheckOption ComboOption RadioOption            |
                     CheckContainer ComboContainer RadioContainer } |
