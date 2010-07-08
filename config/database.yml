@@ -15,8 +15,3 @@ test:
   username: root
   password: 
 
-production:
-  adapter: mysql
-  database: surveybuilder_production
-  username: root
-  password: $up3rse(re7r4nD0mNEsS
